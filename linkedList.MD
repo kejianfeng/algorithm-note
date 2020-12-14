@@ -25,3 +25,24 @@ var reverseList = function(head) {
     return cur
 };
 ```
+
+#### 2. [链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+解题思路：
+
+其实就是利用快慢指针，后指针每次都比前指针多跑一部，那后指针经过的路程总为前指针的两倍，当后指针到达链表末尾时，前指针自然位于链表的中点；
+代码实现也很简单：
+
+代码实现：
+
+```
+var middleNode = function(head) {
+    let p1 = head
+    while(p1 && p1.next) {
+        head = head.next
+        p1 = p1.next.next
+    }
+    return head
+};
+```
+
+
