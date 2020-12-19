@@ -147,4 +147,31 @@ var removeElements = function(head, val) {
 };
 ```
 
+#### 5.[环形链表](https://leetcode-cn.com/problems/linked-list-cycle)
+
+解题思路：
+
+如果链表是一个环，那下一个永远没有尽头，怎么知道是在绕圈遍历呢？这个时候就可以用上双指针了！准确来说是快慢双指针
+何为快慢双指针？例如初始化设置两个指针，p,q均指向head,每次p前进一个节点，而q每次前进两个节点。q比p走得快，如果是在绕圈，q肯定会追上p,这时我们只需要p与q有没有相等得时刻就知道该链表有没有环
+
+代码实现：
+
+```
+var hasCycle = function(head) {
+    if(!head) return false;
+    let low = head
+    let high = head.next ? head.next.next : head.next
+    while(low && high) {
+       if (low === high) {
+            return true
+       } else {
+           low = low.next
+           high = high.next ? high.next.next : high.next
+       }
+    }
+    return false
+    
+};
+
+```
 
