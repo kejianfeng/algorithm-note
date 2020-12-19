@@ -185,7 +185,7 @@ p1先向前移动n步，之后 p1 和 p2共同向前移动，此时二者的距�
 
 注意，可能移动相隔了几个有点抽象，自己画下就知道了，一图胜千言：
 
-![](https://image.jianfengke.com/linked-pic-qwda.jpg)
+![](https://github.com/kejianfeng/algorithm-note/blob/main/images/linked-pic-qwda.jpg)
 
 代码实现：
 ```
