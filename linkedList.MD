@@ -7,7 +7,7 @@
 - 循环上述过程，直至 p1到达链表尾部
 
 思路图解：
-![](https://image.jianfengke.com/20201205121132.png)
+![](https://github.com/kejianfeng/algorithm-note/blob/main/images/link-reverse.gif)
 
 代码实现：
 ```
