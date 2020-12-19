@@ -7,6 +7,7 @@
 - 循环上述过程，直至 p1到达链表尾部
 
 思路图解：
+
 ![](https://github.com/kejianfeng/algorithm-note/blob/main/images/link-reverse.gif)
 
 代码实现：
@@ -205,5 +206,28 @@ var removeNthFromEnd = function(head, n) {
 };
 ```
 
+#### 7.[相交链表](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)
+
+解题思路：
+
+如果两个链表相交，那么相交点之后的长度是相同的。
+指针 pA 指向 A 链表，指针 pB 指向 B 链表，依次往后遍历
+如果 pA 到了末尾，则 pA = headB 继续遍历
+如果 pB 到了末尾，则 pB = headA 继续遍历
+比较长的链表指针指向较短链表head时，长度差就消除了
+如此，只需要将最短链表遍历两次即可找到位置
+
+
+```
+var getIntersectionNode = function(headA, headB) {
+    let curA = headA;
+    let curB = headB
+    while(curA !== curB) {
+        curA = curA ? curA.next : headB
+        curB = curB ? curB.next : headA
+    }
+    return curA
+};
+```
 
 
