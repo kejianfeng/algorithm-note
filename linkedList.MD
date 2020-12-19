@@ -175,3 +175,35 @@ var hasCycle = function(head) {
 
 ```
 
+#### 6. [删除链表的倒数第N个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+
+解题思路：
+
+双指针大法 + 哨兵 , 设预先指针(哨兵) flag.next指向 head，设前指针为 p1，后指针为 p2，二者都等于 flag
+p1先向前移动n步，之后 p1 和 p2共同向前移动，此时二者的距离为 n，当 p1.next = null时，p2的位置恰好为倒数第 n+1, p2.next=p2.next.next，从而删除倒数第n个节点
+删除后返回 flag.next，有人说为什么不直接返回 head？因为 head 有可能是被删掉的点鸭，例如长度只有1时，删除倒数第一个，head就不复存在了;
+
+注意，可能移动相隔了几个有点抽象，自己画下就知道了，一图胜千言：
+
+![](https://image.jianfengke.com/linked-pic-qwda.jpg)
+
+代码实现：
+```
+var removeNthFromEnd = function(head, n) {
+    let flag = new ListNode(0)
+    flag.next = head
+    let p1 = p2 = flag
+    for(let i = 0; i < n; i++) {
+        p1 = p1.next
+    }
+    while(p1.next) {
+        p1 = p1.next
+        p2 = p2.next
+    }
+    p2.next = p2.next.next
+    return flag.next
+};
+```
+
+
+
