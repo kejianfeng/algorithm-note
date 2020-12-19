@@ -123,4 +123,28 @@ function reverse(head) {
 }
 ```
 
+#### 4. [移除链表元素](https://leetcode-cn.com/problems/remove-linked-list-elements/)
+
+解题思路：
+
+这道题的难点是处理首节点为目标删除节点的情况，所以需要设置个空的首节点。然后开始遍历，当下一个的值等于目标值，使当前节点指针的next等于next.next, 记住，这时候当前节点并没有前进一步，只有前节点指针的next.val 不等于目标值，当前节点才前进一位。
+
+代码实现：
+```
+var removeElements = function(head, val) {
+    let newNode = new ListNode(0)
+    newNode.next = head
+    let headNode  = newNode
+    while(newNode.next) {
+        if(newNode.next.val === val) {
+            newNode.next = newNode.next.next
+        } else {
+            newNode = newNode.next
+        }
+    }
+    return headNode.next
+
+};
+```
+
 
