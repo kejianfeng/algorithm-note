@@ -230,4 +230,69 @@ var getIntersectionNode = function(headA, headB) {
 };
 ```
 
+#### 8. [合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists)
+
+解题思路
+思路一：非递归实现，构造个新节点，next指向两链表首节点较小的一一个，然后开始遍历下去，边比较边next; 需要注意的是要用多一个哨兵节点保存好新链表首节点的位置，防止迷路
+思路二：递归实现
+终止条件：两条链表分别名为 l1 和 l2，当 l1 为空或 l2 为空时结束
+返回值：每一层调用都返回排序好的链表头
+本级递归内容：如果 l1 的 val 值更小，则将 l1.next 与排序好的链表头相接，l2 同理
+O(m+n)O(m+n)，mm 为 l1的长度，nn 为 l2 的长度
+
+
+思路一代码实现：
+
+```
+var mergeTwoLists = function(l1, l2) {
+   if(!l1) {
+       return l2
+   }
+   if(!l2) {
+       return l1
+   }
+  let p = new ListNode(0)
+  let flag = p  //哨兵节点
+  while(l1 && l2) {
+      if(l1.val <= l2.val) {
+          p.next = l1
+          l1 = l1.next
+      }else {
+          p.next = l2
+          l2 = l2.next
+      }
+      p = p.next
+  }
+  if(l1) {
+      p.next = l1
+  }
+  if(l2) {
+      p.next = l2
+  }
+  return flag.next
+}
+```
+
+思路二代码实现：
+
+```
+var mergeTwoLists = function(l1, l2) {
+    if(l1 === null){
+        return l2;
+    }
+    if(l2 === null){
+        return l1;
+    }
+    if(l1.val < l2.val){
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    }else{
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
+};
+```
+
+
+
 
